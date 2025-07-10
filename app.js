@@ -379,18 +379,29 @@ function initNavigation() {
 
 // Initialize interactions
 function initInteractions() {
+    // Enhanced Enter the Dimension button
+    const enterDimensionBtn = document.querySelector('.dimension-enter-btn');
+    if (enterDimensionBtn) {
+        enterDimensionBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            enterDimensionSequence();
+        });
+    }
+    
     // Glow button effects
     const glowButtons = document.querySelectorAll('.glow-button');
     glowButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Add ripple effect
-            const ripple = document.createElement('span');
-            ripple.classList.add('ripple');
-            button.appendChild(ripple);
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
+            // Add ripple effect (only for non-dimension buttons)
+            if (!button.classList.contains('dimension-enter-btn')) {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                button.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            }
         });
     });
     
@@ -439,6 +450,170 @@ function initInteractions() {
             createParticleBurst(card);
         });
     });
+}
+
+// Enhanced Enter the Dimension sequence
+function enterDimensionSequence() {
+    const homeSection = document.getElementById('home');
+    const enterBtn = document.querySelector('.dimension-enter-btn');
+    const contentPanel = homeSection.querySelector('.content-panel');
+    
+    // Show dramatic button feedback
+    enterBtn.textContent = 'ACTIVATING...';
+    enterBtn.style.transform = 'scale(1.1)';
+    enterBtn.style.boxShadow = '0 0 30px #00ffff, 0 0 60px #00ffff, 0 0 90px #00ffff';
+    
+    // Create dramatic screen flash effect
+    createDimensionFlash();
+    
+    // Trigger special 3D effects
+    triggerDimensionEffects();
+    
+    // Create expanding energy rings
+    createEnergyRings();
+    
+    // After effects, close the home dialog and show interaction hints
+    setTimeout(() => {
+        // Fade out the home section content
+        contentPanel.style.transition = 'all 1s ease-out';
+        contentPanel.style.opacity = '0';
+        contentPanel.style.transform = 'scale(0.8) translateY(-50px)';
+        
+        setTimeout(() => {
+            // Hide home section
+            homeSection.classList.remove('active');
+            
+            // Show interaction hints with dramatic entrance
+            showInteractionHints();
+            
+            // Show success notification
+            showNotification('Dimension portal activated! Explore the interactive space.', 'success');
+            
+            // Reset button for future use
+            enterBtn.textContent = 'Enter the Dimension';
+            enterBtn.style.transform = 'scale(1)';
+            enterBtn.style.boxShadow = '';
+            contentPanel.style.opacity = '1';
+            contentPanel.style.transform = 'scale(1) translateY(0)';
+        }, 1000);
+    }, 2000);
+}
+
+// Create dramatic screen flash effect
+function createDimensionFlash() {
+    const flash = document.createElement('div');
+    flash.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: radial-gradient(circle, rgba(0,255,255,0.8) 0%, rgba(138,43,226,0.6) 50%, rgba(0,0,0,0.9) 100%);
+        z-index: 9998;
+        pointer-events: none;
+        opacity: 0;
+        animation: dimensionFlash 2s ease-in-out;
+    `;
+    
+    document.body.appendChild(flash);
+    
+    setTimeout(() => {
+        flash.remove();
+    }, 2000);
+}
+
+// Trigger special 3D scene effects
+function triggerDimensionEffects() {
+    // Accelerate torus knot rotation
+    if (torusKnot) {
+        let accelerationTime = 0;
+        const originalRotationSpeed = 0.01;
+        
+        const accelerateRotation = () => {
+            accelerationTime += 0.1;
+            if (accelerationTime < 3) {
+                torusKnot.rotation.x += originalRotationSpeed * (1 + accelerationTime * 2);
+                torusKnot.rotation.y += originalRotationSpeed * (1 + accelerationTime * 2);
+                requestAnimationFrame(accelerateRotation);
+            }
+        };
+        accelerateRotation();
+    }
+    
+    // Make floating shapes more active
+    floatingShapes.forEach((shape, index) => {
+        setTimeout(() => {
+            // Pulse effect
+            const originalScale = shape.scale.clone();
+            shape.scale.multiplyScalar(1.5);
+            
+            // Color shift
+            shape.material.emissiveIntensity = 1;
+            
+            setTimeout(() => {
+                shape.scale.copy(originalScale);
+                shape.material.emissiveIntensity = 0.3;
+            }, 500);
+        }, index * 100);
+    });
+    
+    // Intensify particles
+    if (particleSystem) {
+        particleSystem.material.size *= 2;
+        setTimeout(() => {
+            particleSystem.material.size /= 2;
+        }, 3000);
+    }
+}
+
+// Create expanding energy rings
+function createEnergyRings() {
+    for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+            const ring = document.createElement('div');
+            ring.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                width: 20px;
+                height: 20px;
+                border: 2px solid #00ffff;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 9997;
+                pointer-events: none;
+                opacity: 0.8;
+                animation: expandRing 2s ease-out forwards;
+            `;
+            
+            document.body.appendChild(ring);
+            
+            setTimeout(() => {
+                ring.remove();
+            }, 2000);
+        }, i * 300);
+    }
+}
+
+// Show interaction hints with dramatic entrance
+function showInteractionHints() {
+    const hintsContainer = document.querySelector('.interaction-hints');
+    if (hintsContainer) {
+        hintsContainer.style.display = 'block';
+        hintsContainer.style.animation = 'fadeInUp 1s ease-out';
+        
+        // Make hints more prominent temporarily
+        hintsContainer.style.transform = 'scale(1.2)';
+        hintsContainer.style.background = 'rgba(0, 255, 255, 0.1)';
+        hintsContainer.style.borderRadius = '10px';
+        hintsContainer.style.padding = '1rem';
+        
+        setTimeout(() => {
+            hintsContainer.style.transform = 'scale(1)';
+            hintsContainer.style.background = 'transparent';
+            hintsContainer.style.padding = '0';
+        }, 3000);
+    }
 }
 
 // Show notification function
@@ -579,6 +754,67 @@ style.textContent = `
             transform: translateX(100%);
             opacity: 0;
         }
+    }
+    
+    @keyframes dimensionFlash {
+        0% {
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.8;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    
+    @keyframes expandRing {
+        0% {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0.8;
+        }
+        50% {
+            opacity: 0.4;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(20);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .dimension-enter-btn {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .dimension-enter-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+    
+    .interaction-hints {
+        opacity: 0.7;
+        transition: all 0.3s ease;
+    }
+    
+    .interaction-hints.enhanced {
+        opacity: 1;
+        transform: scale(1.1);
     }
 `;
 document.head.appendChild(style);
