@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Portal - Dimensional Gateway Interface</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader">
+            <div class="quantum-rings">
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
+                <div class="ring ring-3"></div>
+            </div>
+            <h2>Initializing Quantum Portal</h2>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p class="loading-text">Stabilizing dimensional gateway...</p>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="app" class="app hidden">
+        <!-- 3D Canvas Container -->
+        <div id="canvas-container" class="canvas-container">
+            <canvas id="quantum-canvas"></canvas>
+        </div>
+
+        <!-- Holographic UI Overlay -->
+        <div class="ui-overlay">
+            <!-- Header -->
+            <header class="ui-header">
+                <h1 class="ui-title">Quantum Portal</h1>
+                <p class="ui-subtitle">Dimensional Gateway Interface</p>
+            </header>
+
+            <!-- Status Panel -->
+            <div class="status-panel">
+                <div class="status-item">
+                    <span class="status-label">Status:</span>
+                    <span id="portal-status" class="status-value status--info">Initializing</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Energy:</span>
+                    <span id="energy-level" class="status-value">94.7%</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Stability:</span>
+                    <span id="stability-level" class="status-value">Optimal</span>
+                </div>
+            </div>
+
+            <!-- Controls Panel -->
+            <div class="controls-panel">
+                <h3>Portal Controls</h3>
+                <div class="control-group">
+                    <button id="activate-btn" class="btn btn--primary quantum-btn">
+                        <span class="btn-text">Activate Portal</span>
+                    </button>
+                    <button id="reset-btn" class="btn btn--secondary quantum-btn">
+                        <span class="btn-text">Reset Systems</span>
+                    </button>
+                </div>
+                <div class="control-group">
+                    <button id="particles-btn" class="btn btn--outline quantum-btn">
+                        <span class="btn-text">Toggle Particles</span>
+                    </button>
+                    <button id="info-btn" class="btn btn--outline quantum-btn">
+                        <span class="btn-text">Portal Info</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Info Panel -->
+            <div id="info-panel" class="info-panel hidden">
+                <h3>Quantum Portal Specifications</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Diameter:</span>
+                        <span class="info-value">20.0 meters</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Energy Type:</span>
+                        <span class="info-value">Quantum Flux</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Particle Count:</span>
+                        <span class="info-value">700 active</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Dimensions:</span>
+                        <span class="info-value">Multi-dimensional</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <p>Move your mouse to explore the portal • Click and drag to rotate the view</p>
+        </div>
+    </div>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

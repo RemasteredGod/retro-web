@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Dimension - 3D Sci-Fi Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <!-- 3D Canvas Container -->
+    <div id="canvas-container">
+        <canvas id="three-canvas"></canvas>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-brand">
+            <span class="brand-text">FUTURE DIMENSION</span>
+        </div>
+        <div class="nav-menu">
+            <button class="nav-item active" data-section="home">Home</button>
+            <button class="nav-item" data-section="about">About</button>
+            <button class="nav-item" data-section="projects">Projects</button>
+            <button class="nav-item" data-section="contact">Contact</button>
+        </div>
+    </nav>
+
+    <!-- Main Content Overlay -->
+    <main class="content-container">
+        <!-- Home Section -->
+        <section id="home" class="content-section active">
+            <div class="content-panel">
+                <h1 class="section-title">Welcome to the Future</h1>
+                <h2 class="section-subtitle">Experience the Next Dimension</h2>
+                <p class="section-description">Immerse yourself in a world where technology meets imagination. Navigate through space and time in this interactive 3D experience.</p>
+                <button class="btn btn--primary glow-button">Enter the Dimension</button>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="content-section">
+            <div class="content-panel">
+                <h1 class="section-title">About This Experience</h1>
+                <p class="section-description">This website demonstrates the power of modern web technologies, combining Three.js 3D graphics with innovative design to create an otherworldly experience.</p>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h3>3D Graphics</h3>
+                        <p>Powered by Three.js</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Interactive Elements</h3>
+                        <p>Mouse controls & animations</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Visual Illusions</h3>
+                        <p>Morphing geometries & effects</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="content-section">
+            <div class="content-panel">
+                <h1 class="section-title">Featured Projects</h1>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>Quantum Portal</h3>
+                        <p>A gateway to parallel dimensions</p>
+                        <button class="btn btn--secondary" onclick="window.open('../quantum-portal/index.html', '_blank')">Explore</button>
+                    </div>
+                    <div class="project-card">
+                        <h3>Stellar Navigation</h3>
+                        <p>Advanced space exploration systems</p>
+                        <button class="btn btn--secondary" onclick="window.open('../stellar-navigation-fixed/index.html', '_blank')">Explore</button>
+                    </div>
+                    <div class="project-card">
+                        <h3>Holographic Interface</h3>
+                        <p>Next-generation user interactions</p>
+                        <button class="btn btn--secondary" onclick="window.open('../holographic-interface/index.html', '_blank')">Explore</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="content-section">
+            <div class="content-panel">
+                <h1 class="section-title">Connect with Us</h1>
+                <p class="section-description">Ready to embark on your own journey? Get in touch and let's create something extraordinary together.</p>
+                <div class="contact-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button class="btn btn--primary glow-button">Send Message</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Initializing Dimension...</p>
+        </div>
+    </div>
+
+    <!-- Interactive Elements -->
+    <div class="interaction-hints">
+        <div class="hint-item">
+            <span>Click objects to interact</span>
+        </div>
+        <div class="hint-item">
+            <span>Drag to rotate view</span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Navigation System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Import Map for Three.js -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h2>INITIALIZING STELLAR NAVIGATION</h2>
+            <p>Loading 3D Environment...</p>
+        </div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+    
+    <div id="hud" class="hud hidden">
+        <div class="hud-panel top-left">
+            <h3>NAVIGATION STATUS</h3>
+            <div class="status-grid">
+                <div class="status-item">
+                    <span class="label">POSITION X:</span>
+                    <span id="pos-x" class="value">0.0</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">POSITION Y:</span>
+                    <span id="pos-y" class="value">0.0</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">POSITION Z:</span>
+                    <span id="pos-z" class="value">0.0</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">SPEED:</span>
+                    <span id="speed" class="value">0.0</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">MODE:</span>
+                    <span id="mode" class="value">MANUAL</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hud-panel top-right">
+            <h3>WAYPOINT DATA</h3>
+            <div id="waypoint-info">
+                <p>Click to place waypoint</p>
+                <p>Press SPACEBAR for autopilot</p>
+                <p>Press ESC to clear waypoints</p>
+            </div>
+        </div>
+
+        <div class="hud-panel bottom-left">
+            <h3>CONTROLS</h3>
+            <div class="controls-grid">
+                <div>W/A/S/D - Movement</div>
+                <div>Q/E - Up/Down</div>
+                <div>Mouse - Look Around</div>
+                <div>M - Toggle Mini-map</div>
+                <div>SPACE - Autopilot</div>
+                <div>ESC - Clear Waypoints</div>
+            </div>
+        </div>
+
+        <div class="hud-panel bottom-right">
+            <h3>SCANNER</h3>
+            <div id="scanner" class="scanner">
+                <div class="scanner-sweep"></div>
+                <div class="scanner-dot"></div>
+            </div>
+        </div>
+
+        <div id="minimap" class="minimap hidden">
+            <canvas id="minimap-canvas"></canvas>
+            <div class="minimap-label">TACTICAL VIEW</div>
+        </div>
+    </div>
+
+    <div id="error-message" class="error-message hidden">
+        <div class="error-content">
+            <h2>SYSTEM ERROR</h2>
+            <p id="error-text"></p>
+            <button id="retry-btn" class="btn btn--primary">RETRY INITIALIZATION</button>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
